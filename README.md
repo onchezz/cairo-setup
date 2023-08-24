@@ -12,6 +12,6 @@ This script will pack you all the necessary tools to learn and work with startkn
 - [cairo compiler and language server](https://www.cairo-lang.org/)
 - [scarb ](https://docs.swmansion.com/scarb/docs.html)
 - [katana](https://book.dojoengine.org/toolchain/katana/overview.html)
-- [rust ](https://sh.rustup.rs)
+- [rust ](https://www.rust-lang.org/tools/install)
 
 
