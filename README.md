@@ -1,6 +1,6 @@
 # cairo-setup\
-This bash script will help install cairo on you your machine
+This bash script will help install and setup cairo on you your machine
 Clone the repo and run the bash script
 ```
-cd cairo-setup &&  bash ./cairo_setup.sh
+curl -sSL https://raw.githubusercontent.com/onchezz/cairo-setup/master/cairo_setup.sh | bash
 ```
