@@ -14,8 +14,20 @@ else
   rustup override set stable && rustup update
 fi
 
+# Check if cairo is installed
+if ! [ -x "$(command -v cairo-run)" ]; then
+
+  # cairo is not installed, proceed with install
+ curl -L https://github.com/franalgaba/cairo-installer/raw/main/bin/cairo-installer | bash
+  
+  
+else
+  echo "Cairo is already installed!"
+
+  rustup override set stable && rustup update
+fi
 # install cairo 
-curl -L https://github.com/franalgaba/cairo-installer/raw/main/bin/cairo-installer | bash
+# curl -L https://github.com/franalgaba/cairo-installer/raw/main/bin/cairo-installer | bash
 
 
 
@@ -76,9 +88,23 @@ if command -v scarb >/dev/null; then
 else
 
   # The command "ls" does not exist, so print a message to the user
-  echo "The command `ls` does not exist."
+  echo "installing scarb ";
+  install_scarb
+  
 
 fi
+
+read -p "would you like to install starknet-foundry : ?? (  y/n ) " forge
+echo $forge
+
+if [[ "$forge" = "y" || "yes" ]]; then 
+
+#installing Starknet foundry 
+  curl -L https://raw.githubusercontent.com/foundry-rs/starknet-foundry/master/scripts/install.sh | sh
+  
+  exit
+fi
+
 function install_katana(){
 read -p "would you like to install katana local development node??  (y/n)  " katana
 if [[ "$katana" = "y" || "yes" ]]; then 
@@ -95,6 +121,7 @@ else
   exit
 fi
 }
+
 if command -v katana >/dev/null; then
 
   # The command "ls" exists, so print a message to the user
