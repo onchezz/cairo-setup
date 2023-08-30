@@ -13,5 +13,6 @@ This script will pack you all the necessary tools to learn and work with startkn
 - [scarb ](https://docs.swmansion.com/scarb/docs.html)
 - [katana](https://book.dojoengine.org/toolchain/katana/overview.html)
 - [rust ](https://www.rust-lang.org/tools/install)
+- [starknet- foundry](https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html)
 
 
