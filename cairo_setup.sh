@@ -58,7 +58,7 @@ elif  [[ "$SHELL" =~ "zsh" ]]; then
   
   echo 'export CAIRO_ROOT="$HOME/.cairo"' >> ~/.zsh_profile
   echo 'command -v cairo-compile >/dev/null || export PATH="$CAIRO_ROOT/target/release:$PATH"' >> ~/.zsh_profile
-
+  check_scarb
 
 
 else
@@ -76,9 +76,10 @@ if [[ "$scarb" = "y" || "yes" ]]; then
 #installing scarb 
   curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
 else
-  exit
+  check_katana
 fi
 }
+function check_scarb(){
 if command -v scarb >/dev/null; then
 
   # The command "scarb " exists, scarb is intalled
@@ -93,7 +94,8 @@ else
   
 
 fi
-
+}
+function install_forge(){
 read -p "would you like to install starknet-foundry : ?? (  y/n ) " forge
 echo $forge
 
@@ -102,9 +104,9 @@ if [[ "$forge" = "y" || "yes" ]]; then
 #installing Starknet foundry 
   curl -L https://raw.githubusercontent.com/foundry-rs/starknet-foundry/master/scripts/install.sh | sh
   
-  exit
+  
 fi
-
+}
 function install_katana(){
 read -p "would you like to install katana local development node??  (y/n)  " katana
 if [[ "$katana" = "y" || "yes" ]]; then 
@@ -117,11 +119,13 @@ if [[ "$katana" = "y" || "yes" ]]; then
 
 #check installation
   echo Katna installed succefully 
+  install_forge
 else
-  exit
+  install_forge
 fi
 }
 
+function check_katana(){
 if command -v katana >/dev/null; then
 
   # The command "ls" exists, so print a message to the user
@@ -132,7 +136,8 @@ else
 
   # The command "ls" does not exist, so print a message to the user
   echo "installing katana... "
-  install_scarb
+  install_katana
 
 
 fi
+}
