@@ -67,19 +67,7 @@ else
   echo "The terminal is not Zsh neither bash "
 
 fi
-function install_scarb(){
-read -p "would you like to install scarb: ?? (  y/n ) " scarb
-echo $scarb
 
-if [[ "$scarb" = "y" || "yes" ]]; then 
-
-#installing scarb 
-  curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
-else
-  check_katana
-fi
-}
-function check_scarb(){
 if command -v scarb >/dev/null; then
 
   # The command "scarb " exists, scarb is intalled
@@ -90,12 +78,17 @@ else
 
   # The command "ls" does not exist, so print a message to the user
   echo "installing scarb ";
-  install_scarb
+read -p "would you like to install scarb: ?? (  y/n ) " scarb
+echo $scarb
+
+if [[ "$scarb" = "y" || "yes" ]]; then 
+
+#installing scarb 
+  curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
   
 
 fi
-}
-function install_forge(){
+#install forge 
 read -p "would you like to install starknet-foundry : ?? (  y/n ) " forge
 echo $forge
 
@@ -106,38 +99,4 @@ if [[ "$forge" = "y" || "yes" ]]; then
   
   
 fi
-}
-function install_katana(){
-read -p "would you like to install katana local development node??  (y/n)  " katana
-if [[ "$katana" = "y" || "yes" ]]; then 
 
-#installing scarb 
-  mkdir ~/.dojo && cd ~/.dojo
-  git clone https://github.com/dojoengine/dojo
-  cd dojo
-  cargo install --path ./crates/katana --locked --force
-
-#check installation
-  echo Katna installed succefully 
-  install_forge
-else
-  install_forge
-fi
-}
-
-function check_katana(){
-if command -v katana >/dev/null; then
-
-  # The command "ls" exists, so print a message to the user
-  echo "Katana local development node is installed "
-  
-
-else
-
-  # The command "ls" does not exist, so print a message to the user
-  echo "installing katana... "
-  install_katana
-
-
-fi
-}
