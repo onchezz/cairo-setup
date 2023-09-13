@@ -5,7 +5,7 @@ This is an interactive script that will help install and setup cairo on  your ma
 Copy and paste this to your terminal
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/onchezz/cairo-setup/master/cairo_setup.sh | bash
+curl -sSL https://raw.githubusercontent.com/onchezz/cairo-setup/setup/cairo_setup.sh | bash
 ```
 This script will pack you all the necessary tools to learn and work with startknet smart contracts 
 #tools documentation
