@@ -70,29 +70,29 @@ fi
 
 
 
-function install_katana(){
-read -p "would you like to install katana local development node??  (y/n)  " katana
-if [[ "$katana" = "y" || "yes" ]]; then 
+# function install_katana(){
+# read -p "would you like to install katana local development node??  (y/n)  " katana
+# if [[ "$katana" = "y" || "yes" ]]; then 
 
-#installing scarb 
-  mkdir ~/.dojo && cd ~/.dojo
-  git clone https://github.com/dojoengine/dojo
-  cd dojo
-  cargo install --path ./crates/katana --locked --force
+# #installing scarb 
+#   mkdir ~/.dojo && cd ~/.dojo
+#   git clone https://github.com/dojoengine/dojo
+#   cd dojo
+#   cargo install --path ./crates/katana --locked --force
 
-#check installation
-  echo Katna installed succefully 
+# #check installation
+#   echo Katna installed succefully 
   
-elif [[ "$katana" = "n" || "no" ]]; then 
- check_forge
+# elif [[ "$katana" = "n" || "no" ]]; then 
+#  check_forge
 
-  # install_forge
-  exit
-else 
-  exit
-fi
-# install_forge
-}
+#   # install_forge
+#   exit
+# else 
+#   exit
+# fi
+# # install_forge
+# }
 
 function install_forge(){
 read -p "would you like to install starknet-foundry : ?? (  y/n ) " forge
@@ -143,7 +143,7 @@ else
   
   echo "scarb tool not installed "
   install_scarb
-  check_katana
+  # check_katana
   
   
 
@@ -151,23 +151,23 @@ fi
 
 }
 
-function check_katana(){
-if command -v katana >/dev/null; then
+# function check_katana(){
+# if command -v katana >/dev/null; then
 
-  # The command "ls" exists, so print a message to the user
-  echo "Katana local development  is installed "
-  check_forge
+#   # The command "ls" exists, so print a message to the user
+#   echo "Katana local development  is installed "
+#   check_forge
   
 
-else
+# else
 
-  # The command "ls" does not exist, so print a message to the user
-  echo "installing katana... "
-  install_katana
+#   # The command "ls" does not exist, so print a message to the user
+#   echo "installing katana... "
+#   install_katana
 
 
-fi
-}
+# fi
+# }
 
 
 # Check if cairo is installed
@@ -177,6 +177,7 @@ if ! [ -x "$(command -v "cairo-run --version")" ]; then
   # cairo is not installed, proceed with install
   echo "Cairo is already installed!"
   check_scarb
+  check_forge
   exit
   
 else
@@ -217,5 +218,5 @@ fi
 
 
 
-
+check_forge
 check_rust_installation
